@@ -1,10 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace NextPermutation.Service.Controllers
 {
@@ -43,7 +38,7 @@ namespace NextPermutation.Service.Controllers
             }
             catch 
             {
-                logger.LogError("Some other error.")
+                logger.LogError("Some other error.");
                 return BadRequest();
             }
         }
