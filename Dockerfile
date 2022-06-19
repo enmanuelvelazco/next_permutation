@@ -7,14 +7,14 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["next_permutation.service.csproj", "next_permutation.service/"]
-RUN dotnet restore "next_permutation.service.csproj"
+COPY ["next_permutation.service/next_permutation.service.csproj", "next_permutation.service/"]
+RUN dotnet restore "next_permutation.service/next_permutation.service.csproj"
 COPY . .
 WORKDIR "/src/next_permutation.service"
 RUN dotnet build "next_permutation.service.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "next_permutation.service.csproj" -c Release -o /app/publish
+RUN dotnet publish "next_permutation.service/next_permutation.service.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
