@@ -14,7 +14,7 @@ WORKDIR "/src/next_permutation.service"
 RUN dotnet build "next_permutation.service.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "next_permutation.service/next_permutation.service.csproj" -c Release -o /app/publish
+RUN dotnet publish "next_permutation.service.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
