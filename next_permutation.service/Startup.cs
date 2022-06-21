@@ -1,10 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -18,7 +15,12 @@ namespace NextPermutation.Service
         {
             services.AddControllers();
 
-            services.AddTransient<IPermutation, Permutation>();
+            services.AddMemoryCache(config =>
+            {
+                config.SizeLimit = 500;
+            });
+
+            services.AddTransient<IPermutation, PermutationCached>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

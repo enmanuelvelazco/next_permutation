@@ -7,10 +7,6 @@ namespace NextPermutation.Service
 {
     public class Permutation : IPermutation
     {
-        public Permutation()
-        {
-        }
-
         public int[] GetNextPermutation(int[] seed)
         {
             int pivot = -1;
@@ -21,7 +17,7 @@ namespace NextPermutation.Service
                     break;
                 }
             if (pivot == -1)
-                Reverse(ref seed, 0, seed.Length - 1);
+                IPermutation.Reverse(ref seed, 0, seed.Length - 1);
             else
             {
                 int pivot2 = seed.Length - 1;
@@ -32,27 +28,10 @@ namespace NextPermutation.Service
                         break;
                     }
 
-                Interchange(ref seed, pivot, pivot2);
-                Reverse(ref seed, pivot + 1, seed.Length - 1);
+                IPermutation.Interchange(ref seed, pivot, pivot2);
+                IPermutation.Reverse(ref seed, pivot + 1, seed.Length - 1);
             }
             return seed;
-        }
-
-        private void Reverse(ref int[] seed, int i, int j)
-        {
-            while (i < j)
-            {
-                Interchange(ref seed, i, j);
-                i++;
-                j--;
-            }
-        }
-
-        private void Interchange(ref int[] seed, int i, int j)
-        {
-            seed[i] = seed[i] + seed[j];
-            seed[j] = seed[i] - seed[j];
-            seed[i] = seed[i] - seed[j];
         }
     }
 }

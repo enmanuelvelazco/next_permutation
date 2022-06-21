@@ -4,7 +4,7 @@ using NextPermutation.Service;
 
 namespace TestNextPermutation
 {
-    public class MatrixTest
+    public class UnitTestNextPermutation
     {
         [Theory]
         [InlineData(new int[]{0, 2, 1}, new int[]{1, 0, 2})]
